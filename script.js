@@ -1,10 +1,10 @@
 const video = document.getElementById('video')
-
+const folder = 'https://raw.githubusercontent.com/aljaroudi/detect-js/master/models'
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('/models')
+  faceapi.nets.tinyFaceDetector.loadFromUri(folder),
+  faceapi.nets.faceLandmark68Net.loadFromUri(folder),
+  faceapi.nets.faceRecognitionNet.loadFromUri(folder),
+  faceapi.nets.faceExpressionNet.loadFromUri(folder)
 ]).then(startVideo)
 
 function startVideo() {
@@ -14,7 +14,7 @@ function startVideo() {
     err => console.error(err)
   )
 }
- 
+
 video.addEventListener('play', () => {
   const canvas = faceapi.createCanvasFromMedia(video)
   document.body.append(canvas)
